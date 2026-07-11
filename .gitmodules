@@ -1,0 +1,3 @@
+[submodule "libtnsl"]
+	path = libtnsl
+	url = https://github.com/tnsl-lang/libtnsl.git
