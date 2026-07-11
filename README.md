@@ -2,14 +2,26 @@
 
 The reference compiler for the TNSL programming language.  The compiler is written in TNSL.
 
+## Requirements:
+- `nasm` - netwide assembler
+  - To bootstrap we build an initial `tnslc` from the `stuck` directory
+  - `tnslc` currently outputs nasm compatible x64 asm
+- `gcc` - c compiler (any will do, just change in build.sh)
+  - we use this to link with libc at the moment until the compiler is in a more complete state
+
 ## Usage:
 
-Place the [bootstrap compiler](https://git.cshift.net/CircleShift/ctc) `ctc` in this folder and execute `build.sh tnslc`
-The compiler outputs x86 NASM compatible assembly.
+Bootstrap using the `setup.sh` script, this builds an initial tnslc from the asm in `stuck`
 
-Examples:
-- `./ctc dummy.tnsl dummy.asm` - Run the bootstrap compiler on the dummy file, output to dummy.asm
-- `./build.sh tnslc` - Build the compiler
+Build using the provided `build.sh` script, it takes the file you want to build as an argument
+- For example: `build.sh tnslc` will build the file named `tnslc.tnsl` and place artifacts in the `build` directory
+
+Run the compiler (once you build it) using the `run.sh` script (works the same way as build.sh) or just copy the
+binary and use it as you please.  Run outputs into `build/NEXT` by default
+
+To update the "stuck" version of the compiler we are using for bootstrap, run `stick.sh` after building the
+compiler with `build.sh`.  This will copy the tnslc asm from the `build` diretory into the `stuck` directory
+and re-build the bootstrap compiler from it.
 
 ## License
 

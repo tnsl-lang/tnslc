@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILD_DIR=./out/NEXT
+BUILD_DIR=./build/NEXT
 ARTIFACT_DIR=$BUILD_DIR/artifacts
 
 mkdir -p $BUILD_DIR
